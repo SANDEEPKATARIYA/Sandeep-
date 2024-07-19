@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            color: white;
+           
+        }
+
+        button{
+            color: #505050;
+        }
+        body{
+            background-color: #eaeaea;
+        }
+        .continer{
+            position: absolute;
+            width: 1000px;
+            height: 500px;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            background-color: #f5f5f5;
+            box-shadow: 0px 30px 50px #bdbdbd;
+            overflow: hidden;
+        }
+
+        .continer .slide .item{
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            top: 50%;
+            transform: translate(0,-50%);
+            border-radius: 20px;
+            box-shadow: 0 30px 50px #505050;
+            background-position: 50% ;
+            /* background-position: 50%; */
+            background-size: cover;
+            display: inline-block;
+            transition: 0.5s;
+           
+        }
+
+        .slide .item:nth-child(1),
+        .item:nth-child(2)
+        {
+            top: 0;
+            left: 0;
+            transform: translate(0,0);
+            border-radius: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .slide .item:nth-child(2){
+            left:calc(100%)
+        }
+        
+        .slide .item:nth-child(3){
+            left: 78%;
+        }
+        .slide .item:nth-child(4){
+            left: calc(56%);
+        }
+
+        .item .content{
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            width: 300px;
+            color: #eaeaea;
+            transform: translate(0,-50%);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: none;
+        }
+
+        .slide .item:nth-child(1) .content{
+            display: block;
+        }
+
+        .content .name{
+            font-size: 40px;
+            text-transform: uppercase;
+            font-weight: bold;
+            opacity: 0;
+            animation: animate 1s ease-in-out 1 forwards;
+        }
+        .content .dec{
+            margin-top: 10px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: animate 1s ease-in-out 1 forwards;
+        }
+        .content button{
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            opacity: 0;
+            animation: animate 1s ease-in-out 1 forwards;
+            border-radius: 10px;
+        }
+
+        @keyframes animate {
+            from{
+                opacity: 0;
+                transform: translate(0,100px);
+                filter: blur(30px);
+            } 
+            to{
+                opacity: 1;
+                transform: translate(0);
+                filter: blur(0);
+            }
+        }
+
+        .button{
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            bottom: 20px;
+           
+        }
+        .button i{
+             color: black;
+        }
+        .button button{
+            width: 40px;
+            height: 35px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            margin: 0 5px;
+            border: 1px solid black;
+            transition: 0.3s;
+            
+        }
+
+        .button button:hover{
+            background: #ababab;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="continer">
+        <div class="slide">
+            <div class="item" style="background-image: url(./image/images.jpeg);">
+                <div class="content">
+                    <div class="name">Full Hd Images</div>
+                    <div class="dec">Images may be subject to copyright.</div>
+                    <button>See More</button>
+                </div>
+               
+            </div>
+            <div class="item" style="background-image: url(./image/yellow-leaf-with-word-autumn-it_1340-29695.avif);">
+                <div class="content">
+                    <div class="name"> Digital Image</div>
+                    <div class="dec">What Do You Need to Know? quos impedit quas. </div>
+                    <button>See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(./image/s4.avif);">
+                <div class="content">
+                    <div class="name">Ultra Images  Freepik </div>
+                    <div class="dec">Get this image on: Freepik | License details
+                        Want to know where this information comes from?</div>
+                    <button>See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(./image/closeup-autumn-leaves-cairn-lake-spa-relax-tranquility-concept_146482-8358.avif);">
+                <div class="content">
+                    <div class="name">Sandeep saini</div>
+                    <div class="dec">Front-End development <br> Ws Cube tech </div>
+                    <button>See More</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="button">
+            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+</body>
+<script>
+    let prev = document.querySelector(".prev")
+    let next = document.querySelector(".next")
+
+    next.addEventListener('click', function(){
+
+        let items  = document.querySelectorAll(".item")
+        document.querySelector('.slide').appendChild(items[0])
+    })
+    prev.addEventListener('click', function(){
+
+    let items  = document.querySelectorAll(".item")
+    document.querySelector('.slide').prepend(items[items.length-1])
+   })
+</script>
+</html>
